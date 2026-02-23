@@ -13,7 +13,7 @@ export default function MovingBackground() {
     useEffect(() => {
         offset.value = withRepeat(
             withTiming(width, {
-                duration: 9000,
+                duration: 3000,
                 easing: Easing.linear,
             }),
             -1,

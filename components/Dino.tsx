@@ -58,16 +58,18 @@ export default function Dino() {
 
 const styles = StyleSheet.create({
     image: {
-        width: "100%",
+        width: "250%",
         height: "100%",
+        right: "74%",
     },
 
     dino: {
-        width: 700,
+        width: 355,
         height: 170,
         position: "absolute",
+        backgroundColor: "#ffffff",
         zIndex: 10,
-        bottom: "20%",
+        bottom: "15%",
         left: "10%",
     },
 })
