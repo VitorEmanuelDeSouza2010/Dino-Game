@@ -1,6 +1,6 @@
 import { useGame } from "@/hooks/gameHook";
 import { useEffect } from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet } from "react-native";
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withSequence, withTiming } from "react-native-reanimated";
 
 export default function Dino() {
@@ -15,7 +15,6 @@ export default function Dino() {
     }))
 
     function handleJump() {
-        console.log("aqui")
         dinoHeight.value = withSequence(
             withTiming(-100, {
             duration: 400,
@@ -67,9 +66,8 @@ const styles = StyleSheet.create({
         width: 355,
         height: 170,
         position: "absolute",
-        backgroundColor: "#ffffff",
         zIndex: 10,
         bottom: "15%",
-        left: "10%",
+        left: "0%",
     },
 })
