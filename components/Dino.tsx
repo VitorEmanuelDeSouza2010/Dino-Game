@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     image: {
         width: "250%",
         height: "100%",
-        right: "74%",
+        right: 74,
     },
 
     dino: {
@@ -68,6 +68,6 @@ const styles = StyleSheet.create({
         position: "absolute",
         zIndex: 10,
         bottom: "15%",
-        left: "0%",
+        left: 50,
     },
 })

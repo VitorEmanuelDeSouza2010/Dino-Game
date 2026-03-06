@@ -2,6 +2,9 @@ import { useGame } from "@/hooks/gameHook";
 import { useEffect } from "react";
 import { Dimensions, Image, StyleSheet } from "react-native";
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming, useAnimatedReaction } from "react-native-reanimated";
+import dinoJBitmap from "@/assets/bitmaps/dino.json";
+import dinoMBitmap from "@/assets/bitmaps/dinoM.json";
+import RockBitmap from "@/assets/bitmaps/Rock.json";
 
 export default function Obstacle({onEnd}: any) {
     const { width } = Dimensions.get("window");
@@ -18,14 +21,41 @@ export default function Obstacle({onEnd}: any) {
 
     useAnimatedReaction(() => { return offset.value},
         (currentValue) => {
-            const left = Math.max(0, currentValue);
-            const right = Math.min(355, currentValue + 225);
+            const rockPosition = width - Math.round(currentValue);
+            const left = Math.max(50, rockPosition);
+            const right = Math.min(124, rockPosition + 225);
             const bottom = Math.max(0, dinoHeight.value);
             const top = 225
 
             if(left > right || bottom > top) {
-                console.log("No collision")
                 return;
+            }
+
+            for (let x = left; x < right; x++) {
+                for (let y = bottom; y < top; y++) {
+                    console.log(x, y);
+                    const xDino = x - 50;
+                    const xRock = x - rockPosition;
+                    const yDino = 170 - (y - dinoHeight.value);
+                    const yRock = 225 - y;
+
+                    const dinoBitmap = dinoHeight.value > 0 ? dinoJBitmap : dinoMBitmap;
+
+                    if(
+                        xDino < 355 &&
+                        xDino > -1 &&
+                        yDino < 225 &&
+                        yDino > -1 &&
+                        xRock < 225 &&
+                        xRock > -1 &&
+                        yRock < 225 &&
+                        yRock > -1 &&
+                        dinoBitmap[xDino][yDino] &&
+                        RockBitmap[xRock][yRock]
+                    ) {
+                        console.log("Pixel Collision")
+                    }
+                }
             }
         },
     );
