@@ -1,13 +1,17 @@
+import { useGame } from '@/hooks/gameHook';
 import { Link } from 'expo-router';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ImageBackground } from 'react-native';
 
 export default function HomeScreen() {
+
+  const { setScore } = useGame();
+
   return (
     <ImageBackground source={require("@/assets/images/chao.avif")} resizeMode="stretch" style={styles.background}>
       <View style={styles.container}>
         <Link href="/game" asChild replace>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => setScore(0)}>
             <Text style={styles.title}>Jogar</Text>
           </TouchableOpacity>
         </Link>

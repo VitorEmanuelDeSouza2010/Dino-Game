@@ -1,10 +1,11 @@
-import { useGame } from "@/hooks/gameHook";
-import { useEffect } from "react";
-import { Dimensions, Image, StyleSheet } from "react-native";
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming, useAnimatedReaction } from "react-native-reanimated";
 import dinoJBitmap from "@/assets/bitmaps/dino.json";
 import dinoMBitmap from "@/assets/bitmaps/dinoM.json";
 import RockBitmap from "@/assets/bitmaps/Rock.json";
+import { useGame } from "@/hooks/gameHook";
+import { router } from "expo-router";
+import { useEffect } from "react";
+import { Dimensions, Image, StyleSheet } from "react-native";
+import Animated, { Easing, useAnimatedReaction, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
 export default function Obstacle({onEnd}: any) {
     const { width } = Dimensions.get("window");
@@ -33,7 +34,6 @@ export default function Obstacle({onEnd}: any) {
 
             for (let x = left; x < right; x++) {
                 for (let y = bottom; y < top; y++) {
-                    console.log(x, y);
                     const xDino = x - 50;
                     const xRock = x - rockPosition;
                     const yDino = 170 - (y - dinoHeight.value);
@@ -53,7 +53,7 @@ export default function Obstacle({onEnd}: any) {
                         dinoBitmap[xDino][yDino] &&
                         RockBitmap[xRock][yRock]
                     ) {
-                        console.log("Pixel Collision")
+                        router.replace("/end");
                     }
                 }
             }

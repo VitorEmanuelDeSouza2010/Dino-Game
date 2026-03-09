@@ -40,13 +40,13 @@ export default function Dino() {
 
         {jumping ? (
             <Image
-                source={require("@/assets/images/dinoRun.png")}
+                source={require("@/assets/images/DinoJumpV2.png")}
                 resizeMode="contain"
                 style={styles.image}
             />
         ) : (
             <Image
-                source={require("@/assets/images/dinoRun.webp")}
+                source={require("@/assets/images/DinoRunV2.webp")}
                 resizeMode="contain"
                 style={styles.image}
             />
@@ -57,17 +57,16 @@ export default function Dino() {
 
 const styles = StyleSheet.create({
     image: {
-        width: "250%",
+        width: "100%",
         height: "100%",
-        right: 74,
     },
 
     dino: {
-        width: 355,
-        height: 170,
+        width: 354,
+        height: 162,
         position: "absolute",
         zIndex: 10,
         bottom: "15%",
-        left: 50,
+        left: 0,
     },
 })

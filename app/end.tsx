@@ -20,7 +20,7 @@ export default function End() {
         </View>
 
         <View style={styles.dino}>
-            <Image source={require("@/assets/images/dinoRun.png")} style={styles.image} resizeMode="contain" />
+            <Image source={require("@/assets/images/DinoJumpV2.png")} style={styles.image} resizeMode="contain" />
         </View>
 
         <View style={styles.textContainer}>
@@ -29,7 +29,7 @@ export default function End() {
             <Text style={styles.text}>{score}</Text>
 
             <Link href="/" asChild>
-                <Text>Voltar</Text>
+                <Text style={styles.button}>Voltar</Text>
             </Link>
         </View>
 
@@ -78,5 +78,16 @@ const styles = StyleSheet.create ({
 
     text: {
         width: "auto",
+        fontSize: 30,
+        fontWeight: "bold",
+    },
+
+    button: {
+        width: "auto",
+        backgroundColor: "black",
+        paddingHorizontal: 30,
+        paddingVertical: 10,
+        borderRadius: 999,
+        color: "white",
     },
 });
